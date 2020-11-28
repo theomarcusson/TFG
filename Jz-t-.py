@@ -29,7 +29,7 @@ def J(t):
 
 dt = 10 
 t = 0.000000000000001
-while t <= T:
+while t <= 10*T:
  print ('time %g flow %g' % (t, J(t)))
  t *= dt
  
