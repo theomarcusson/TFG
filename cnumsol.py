@@ -25,7 +25,7 @@ v = float(1.6e-7)
 T = float((4*D)/(pi*v**2))
 
 def c(z, t):
- return cB*(1-exp(-(v*z)/D)) - (cB/2) * (ss.erfc((z+v*t)/(sqrt(4*D*t)))) - exp(-((v*z)/D)) * (2 - (ss.erfc((z-v*t)/(sqrt(4*D*t)))))
+ return cB*(1-exp(-(v*z)/D)) - (cB/2) * ((ss.erfc((z+v*t)/(sqrt(4*D*t)))) - exp(-((v*z)/D)) * (2 - (ss.erfc((z-v*t)/(sqrt(4*D*t))))))
 
 dt = 10 
 t = 1e-15
