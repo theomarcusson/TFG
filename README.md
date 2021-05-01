@@ -11,6 +11,6 @@ using python's FEniCS open source software to achieve
 it.
 
 First I have tried a few tests in python3 with 
-matplotlib.pyplot, numpy and scipy before using the
+matplotlib.pyplot, numpy, math and scipy before using the
 FEniCS software to get familiar with the python 
 programming dynamics.
