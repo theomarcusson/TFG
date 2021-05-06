@@ -21,5 +21,5 @@ Once this solutions have been developed, I have
 been programing with the FEniCS software numerical
 solutions, i.e. without the analytical solution. 
 
-A stationary 2D advection-diffusion version of the program
+A stationary advection-diffusion version of the program
 is already available.
