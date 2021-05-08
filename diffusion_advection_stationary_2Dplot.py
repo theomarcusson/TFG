@@ -99,7 +99,7 @@ def diffusion ( my_grid, my_range ):
   my_mu = Constant( D / (L * v_M) )
 # my_mu = 3.58333*pow(10, -6) 
 #
-#  Set the source.
+#  Set the source term.
 #
   f = Constant ( 0.0 )
 #
