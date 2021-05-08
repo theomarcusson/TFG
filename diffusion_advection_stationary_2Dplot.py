@@ -7,7 +7,7 @@ def diffusion ( my_grid, my_range ):
 
 #*****************************************************************************80
 #
-## diffusion simulates a simple 1D diffusion problem.
+## diffusion simulates a simple 2D diffusion problem.
 #
 #  Discussion:
 #
@@ -16,7 +16,7 @@ def diffusion ( my_grid, my_range ):
 #      u(1) = 1
 #
 #    where
-#      x' = x/L and t'= Dt/L*L
+#      x' = x/L and t'= t*v_M/L
 #      (D= diffusion coef, L=size of the cuvette)
 #
 #      u_exact = x
@@ -34,7 +34,7 @@ def diffusion ( my_grid, my_range ):
 #  Author:
 #
 #    John Burkardt
-#    Modified by Jordi Faraudo
+#    Modified by Jordi Faraudo & Theo Marcusson
 #
 #  Reference:
 #
@@ -43,7 +43,7 @@ def diffusion ( my_grid, my_range ):
 #
 #  Parameters:
 #
-#    Input, integer my_grid, the resolution on the unit interval.
+#    Input, integer my_grid, the resolution on the unit interval; float my_range [0,1], the interval of resolution
 #
 
   import matplotlib.pyplot as plt
@@ -58,8 +58,6 @@ def diffusion ( my_grid, my_range ):
   south = Constant(0.0)
   east = Constant(1.0)
   north = Constant(1.0)
-  nx = my_grid
-  ny = 5 * nx
 
   domain = Rectangle(Point(west, south), Point(east, north)) 
   
@@ -67,8 +65,8 @@ def diffusion ( my_grid, my_range ):
   
   n = 5
   m = 6
-  serie = [n**-i for i in range(m)]
-  rectang = [Rectangle(Point(-5, 0), Point(5, v)) for v in serie]
+  series = [n**-i for i in range(m)]
+  rectang = [Rectangle(Point(west, south), Point(east, v)) for v in serie]
   
   for (i, bl) in enumerate(rectang):
    domain.set_subdomain(1 + i, bl)
@@ -101,11 +99,11 @@ def diffusion ( my_grid, my_range ):
   my_mu = Constant( D / (L * v_M) )
 # my_mu = 3.58333*pow(10, -6) 
 #
-#  Set the right hand side.
+#  Set the source.
 #
   f = Constant ( 0.0 )
 #
-#  Define the bilinear form and right hand side
+#  Define the bilinear form.
 #
   F = my_mu*dot(grad(u),grad(v))*dx - dot(w,grad(u))*v*dx - f*v*dx
   
@@ -149,7 +147,6 @@ def diffusion ( my_grid, my_range ):
   plt.title ( 'trial_mesh_2d, grid %d' % ( my_grid ) )
   filename = ( 'trial_mesh_2d_grid_%d_range_%g.png' % ( my_grid, my_range ) )
   plt.savefig ( filename )
-  #plt.show()
   print ( '  Graphics saved as "%s"' % ( filename ) )
   print ( '  Max resolution in Boundary Layer: %g m' % (n**(-m+1)))
 
@@ -160,11 +157,7 @@ def diffusion ( my_grid, my_range ):
   #2D plot with a color bar
   ax = plt.subplot ( 111 )
   cs = plot (uh)
-  #plot (u_exact, label = 'Exact' )
-  #ax.legend ( )
-  #ax.grid ( True )
   cbar = fig.colorbar(cs)
-  #plt.title ( 'diffusion solutions, grid %d' % ( my_grid ) )
   plt.xlim([0, my_range])
   plt.ylim([0, my_range])
   filename = ( 'diffusion_solutions_grid%d_range_%g.png' % ( my_grid, my_range ) )
@@ -193,7 +186,7 @@ def diffusion_test ( ):
 #  Author:
 #
 #    John Burkardt
-#    Modified Jordi Faraudo 
+#    Modified Jordi Faraudo & Theo Marcusson
 #
   import dolfin
   import platform
@@ -220,8 +213,8 @@ def diffusion_test ( ):
 #  
   my_grid = 20
 
-# SET RANGE IN Y AXIS
-# from y'(y=0)=0 to y'(y=L)=1; my_range = [0, 1]
+# Set range from y'(y=0)=0 to y'(y=L)=1; 
+# my_range = [0, 1]
   
   for my_range in ( 0.01 , 0.1 , 1.0 ):
     diffusion ( my_grid , my_range )
