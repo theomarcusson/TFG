@@ -66,7 +66,7 @@ def diffusion ( my_grid, my_range ):
   n = 5
   m = 6
   series = [n**-i for i in range(m)]
-  rectang = [Rectangle(Point(west, south), Point(east, v)) for v in serie]
+  rectang = [Rectangle(Point(west, south), Point(east, v)) for v in series]
   
   for (i, bl) in enumerate(rectang):
    domain.set_subdomain(1 + i, bl)
