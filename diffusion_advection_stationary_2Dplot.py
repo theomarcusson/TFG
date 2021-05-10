@@ -119,7 +119,7 @@ def diffusion ( my_grid, my_range ):
   def boundary(x, on_boundary):
 #   check whether the point is at the boundary of the domain
     if on_boundary:
-#       apply boundary conditions at x=0 or x=1
+#       apply boundary conditions at y=0 or y=1
         if near(x[1], south, DOLFIN_EPS) or near(x[1], north, DOLFIN_EPS):
             return True
         else:
