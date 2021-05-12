@@ -3,7 +3,7 @@
 from dolfin import *
 from mshr import *
 
-def diffusion ( my_grid, my_range ):
+def diffusion_advection ( my_grid, my_range ):
 
 #*****************************************************************************80
 #
@@ -169,11 +169,11 @@ def diffusion ( my_grid, my_range ):
 #
   return
 
-def diffusion_test ( ):
+def diffusion_advection_test ( ):
 
 #*****************************************************************************80
 #
-## convection_diffusion_test tests convection_diffusion.
+#
 #
 #  Licensing:
 #
@@ -204,7 +204,6 @@ def diffusion_test ( ):
   print ( '  Python version: %s' % ( platform.python_version ( ) ) )
   print ( '  FENICS version %s'% ( dolfin.__version__ ) )
   print ( '  Diffusion problem on the unit interval.' )
-  print ( '  - ux = f in Omega = the unit interval.' )
   print ( '  u(0) = 0, u(1) = 1' )
   
 #  
@@ -217,13 +216,13 @@ def diffusion_test ( ):
 # my_range = [0, 1]
   
   for my_range in ( 0.01 , 0.1 , 1.0 ):
-    diffusion ( my_grid , my_range )
+    diffusion_advection ( my_grid , my_range )
 
 #
 #  Terminate.
 #
   print ( '' )
-  print ( 'diffusion_test:' )
+  print ( 'dif_adv_test:' )
   print ( '  Normal end of execution.' )
   print ( '' )
   print ( time.ctime ( time.time() ) )
@@ -231,4 +230,4 @@ def diffusion_test ( ):
 
 if ( __name__ == '__main__' ):
 
-  diffusion_test ( )
+  diffusion__advection_test ( )
