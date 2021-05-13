@@ -94,10 +94,10 @@ def diffusion_advection ( my_grid, my_range ):
   c_B = Constant(5)	#[mg/L]
   L = Constant(0.05)
   D = Constant(4.3*pow(10, -11))
-  v_M = Constant(6*pow(10, -7))
+  v_M = Constant(1.6*pow(10, -7))
   w = as_vector((0.0, (1)))
   my_mu = Constant( D / (L * v_M) )
-# my_mu = 3.58333*pow(10, -6) 
+# my_mu = 5.375*pow(10, -3) 
 #
 #  Set the source term.
 #
