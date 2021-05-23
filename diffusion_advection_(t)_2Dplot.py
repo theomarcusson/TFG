@@ -164,7 +164,7 @@ def diffusion_advection ( my_grid, my_range ):
     plt.ylim([0, my_range])
     zoom = 1/my_range
     u1.assign(u)
-    rt = t * 312500		#real time, in seconds.
+    rt = (t * ( L / v_M ))		#real time, in seconds.
     filename = ('difu_adv_zoom_%g_rt_%.1f_t_%.6f.png' % ( zoom, rt, t ))
     ro = round((t-dt)*num_steps)
 
