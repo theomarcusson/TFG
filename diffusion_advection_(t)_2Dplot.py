@@ -120,8 +120,8 @@ def diffusion_advection ( my_grid, my_range ):
 #
 #  Define the initial condition u(t=0) = 1
 #  
-  u_D = Constant(1) 
-  u1 = project(u_D, V)
+  u_0 = Constant(1) 
+  u1 = project(u_0, V)
 #
 #  Set the right hand and left hand side.
 # 
